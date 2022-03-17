@@ -4,20 +4,22 @@
     <style>
 #lbl {
     font-family: monospace;
-    font-size: xx-large;
-    color: #F0F8FF;
+    font-size: x-large;
+    color: #ffffff;
     padding: 5px;
+    /*border: 1px solid #ececec;*/
     text-align: center;
     line-height: 1.5;
     height:85%
 
 
 }
+     
 #date{
     font-size:large;
 }
 body{
-    background-color: #2F3437;
+    background-color: #191919ff;
 }
     </style>
 </head>
@@ -26,7 +28,8 @@ body{
 </body>
 
 <script>
-    var weekday = new Array(7);
+    function display() {
+        var weekday = new Array(7);
     weekday[0] = "Sunday";
     weekday[1] = "Monday";
     weekday[2] = "Tuesday";
@@ -39,20 +42,34 @@ body{
     var today = new Date();
     var hrs = today.getHours();
     var dayOfWeek = weekday[today.getDay()];
-    var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear()  ;
-
+    var date = dayOfWeek+" " + zeros((today.getMonth()+1)) + "/" +zeros(today.getDate()) +'/'+today.getFullYear()  ;
+    var time = zeros(hrs)+":"+zeros(today.getMinutes())+":"+zeros(today.getSeconds());
+    
     var greet;
 
     if (hrs < 12)
-        greet = 'Good Morning  ';
+        greet = 'Good Morning Ivan';
     else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon ';
-    else if (hrs >= 17 && hrs <= 18)
-        greet = ' Good Evening   ';
-    else if (hrs >= 18 && hrs <= 24)
-        greet = 'Good Night ';
+        greet = 'Good Afternoon Ivan';
+    else if (hrs >= 17 && hrs <= 24)
+        greet = 'Good Evening Ivan';
 
     document.getElementById('lbl').innerHTML =
-        greet+= "Ivan" + `<div id="date"> It's ${date}</div>`;
+        greet+=`<div id="date"> It's ${date}</div>`+`<div id="date"> ${time}</div>`;
+    }
+function zeros(num) {
+if (num < 10) {
+    num = '0' + num
+};
+return num;
+}
+
+function dateTime() {
+display();
+setTimeout(dateTime, 500);
+}
+
+dateTime()    
+    
 </script> 
 </html>
