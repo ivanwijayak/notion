@@ -48,11 +48,11 @@ body{
     var greet;
 
     if (hrs < 12)
-        greet = 'Good Morning Ivan';
+        greet = 'Buenos Dias Ivan';
     else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon Ivan';
+        greet = 'Buenas Tardes Ivan';
     else if (hrs >= 17 && hrs <= 24)
-        greet = 'Good Evening Ivan';
+        greet = 'Buenas Noches Ivan';
 
     document.getElementById('lbl').innerHTML =
         greet+=`<div id="date"> It's ${date}</div>`+`<div id="date"> ${time}</div>`;
